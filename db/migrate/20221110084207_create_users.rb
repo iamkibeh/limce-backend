@@ -3,7 +3,7 @@ class CreateUsers < ActiveRecord::Migration[6.1]
     create_table :users do |t|
       t.string :name
       t.string :comment
-      t.interger :song_id
+      t.integer :song_id
     end
   end
 end

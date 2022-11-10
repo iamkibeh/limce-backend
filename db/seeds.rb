@@ -1,12 +1,18 @@
-puts "🌱 Seeding spices..."
+puts "🌱 Seeding..."
+
+Artist.destroy_all
+Album.destroy_all
+Song.destroy_all
+Review.destroy_all
+User.destroy_all
+
 
 # Seed your database here
 artist1 = Artist.create(name: "Drake")
 artist2 = Artist.create(name: "J. Cole")
-artist3 = Artist.create(name: Faker::Name.name)
 
 album1 = Album.create(name: 'Her Loss', image_url: 'https://res.cloudinary.com/dphlf7a8o/image/upload/v1668016652/her_loss_zlnjnz.jpg', artist_id: artist1.id)
-album2 = Album.create(name: '2014 Forest Hills Drive', image_url: 'https://res.cloudinary.com/dphlf7a8o/image/upload/v1668016652/her_loss_zlnjnz.jpg', artist_id: artist1.id)
+album2 = Album.create(name: '2014 Forest Hills Drive', image_url: 'https://res.cloudinary.com/dphlf7a8o/image/upload/v1668016652/her_loss_zlnjnz.jpg', artist_id: artist2.id)
 
 
 song1 = Song.create(name: "Rich Flex", artist_id: artist1.id, album_id: album1.id, iframe_url: 'woow')
@@ -21,9 +27,13 @@ song9 = Song.create(name: "Fire Squad", artist_id: artist2.id, album_id: album2.
 song10 = Song.create(name: "G.O.M.D", artist_id: artist2.id, album_id: album2.id, iframe_url: 'woow')
 
 
-user1 = User.create()
-user2
-user3
+user1 = User.create(name: Faker::Name.name)
+user2 = User.create(name: Faker::Name.name)
+user3 = User.create(name: Faker::Name.name)
 
+review1 = Review.create(comment: "This is trash", song_id: song1.id, user_id: user1.id )
+review2 = Review.create(comment: "Drake is the goat", song_id: song3.id, user_id: user2.id)
+review3 = Review.create(comment: "J.cole rhymes deep", song_id: song7.id, user_id: user3.id)
+review4 = Review.create(comment: "This is why i love cole", song_id: song9.id, user_id: user1.id)
 
 puts "✅ Done seeding!"

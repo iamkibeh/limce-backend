@@ -10,4 +10,36 @@ class ApplicationController < Sinatra::Base
     review.to_json
   end
 
+  get '/songs' do
+    songs = Song.all
+    songs.to_json
+  end
+
+  get '/songs/:id' do
+    song = Song.find(params[:id])
+    song.to_json
+  end
+
+  get '/albums' do
+    albums = Album.all
+    albums.to_json(only: [:id, :name, :image_url])
+  end
+
+  get "/albums/:id" do
+    album = Album.find(params[:id])
+    album.to_json(only: [:id, :name, :image_url], include: {
+      songs: {only: [:id, :name, :iframe_url], include: {
+        reviews: {only: [:id, :comment] }}
+      }})
+  end
+
+  get '/users' do
+    users = User.all
+    users.to_json
+  end
+
+  get '/reviews' do
+    reviews = Review.all
+    reviews.to_json
+  end
 end

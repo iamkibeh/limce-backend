@@ -46,7 +46,7 @@ class ApplicationController < Sinatra::Base
 
   patch "/songs/:id" do
     song = Song.find(params[:id])
-    song.likes = song.likes + params[:likes]
+    song.update(likes: params[:likes])
     song.to_json
   end
 

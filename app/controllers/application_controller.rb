@@ -28,7 +28,7 @@ class ApplicationController < Sinatra::Base
   get "/albums/:id" do
     album = Album.find(params[:id])
     album.to_json(only: [:id, :name, :image_url], include: {
-      songs: {only: [:id, :name, :iframe_url], include: {
+      songs: {only: [:id, :name, :iframe_url, :likes], include: {
         reviews: {only: [:id, :comment] }}
       }})
   end

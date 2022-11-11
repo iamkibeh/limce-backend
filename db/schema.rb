@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_11_10_094058) do
+ActiveRecord::Schema.define(version: 2022_11_11_052628) do
 
   create_table "albums", force: :cascade do |t|
     t.string "name"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 2022_11_10_094058) do
     t.integer "artist_id"
     t.integer "album_id"
     t.string "iframe_url"
+    t.integer "likes"
   end
 
   create_table "users", force: :cascade do |t|
